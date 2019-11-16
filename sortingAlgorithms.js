@@ -47,4 +47,4 @@ function swap(arr, i, j){
             }
             return arr;
         }
-        
+        // Big O is of n-square
