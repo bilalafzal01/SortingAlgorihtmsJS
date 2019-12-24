@@ -65,7 +65,7 @@ class BinarySearchTree {
         }
         return false;
     }
-    breadthFirstTraversal(tree) {
+    breadthFirstTraversal() {
         var queue = [],
             visited = [],
             temp = this.root;
@@ -80,6 +80,54 @@ class BinarySearchTree {
             }
         }
         return visited;
+    }
+    preOrderTraversal() {
+        var data = [],
+            current = this.root;
+
+        function traverse(node) {
+            data.push(node.value);
+            if (node.left) {
+                traverse(node.left);
+            }
+            if (node.right) {
+                traverse(node.right);
+            }
+        }
+        traverse(current);
+        return data;
+    }
+    postOrderTraversal() {
+        var data = [],
+            current = this.root;
+
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left);
+            }
+            if (node.right) {
+                traverse(node.right);
+            }
+            data.push(node.value);
+        }
+        traverse(current);
+        return data;
+    }
+    inOrderTraversal() {
+        var data = [],
+            current = this.root;
+
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left);
+            }
+            data.push(node.value);
+            if (node.right) {
+                traverse(node.right);
+            }
+        }
+        traverse(current);
+        return data;
     }
 }
 
@@ -96,8 +144,8 @@ tree.insert(11)
 tree.insert(2)
 tree.insert(16)
 tree.insert(7)
-
-
-
-
 tree.find(11);
+
+tree.preOrderTraversal();
+tree.postOrderTraversal();
+tree.inOrderTraversal();
